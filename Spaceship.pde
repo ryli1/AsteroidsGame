@@ -10,13 +10,42 @@ class Spaceship extends Floater {
     myYspeed = 0;
     myPointDirection = 0;
   }
+  public void move () {  //move the floater in the current direction of travel     
+    //change the x and y coordinates by myXspeed and myYspeed       
+    myCenterX += myXspeed;    
+    myCenterY += myYspeed;     
+    //wrap around screen    
+    if (myCenterX > width) {     
+      myCenterX = 0;
+    } else if (myCenterX<0) {     
+      myCenterX = width;
+    }    
+    if (myCenterY > height) {    
+      myCenterY = 0;
+    } else if (myCenterY < 0) {     
+      myCenterY = height;
+    }
+  }
   public void hyperspace() {
     myXspeed = 0;
     myYspeed = 0;
     myCenterX = Math.random()*600;
     myCenterY = Math.random()*600;
+    myPointDirection = 0;
+  }
+  public double getX() {
+    return myCenterX;
+  }
+  public double getY() {
+    return myCenterY;
   }
   public double getXspeed() {
     return myXspeed; 
+  }
+  public double getYspeed() {
+    return myYspeed; 
+  }
+  public double getDirection() {
+    return myPointDirection; 
   }
 }
