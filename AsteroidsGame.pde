@@ -30,7 +30,6 @@ public void draw() {
   }
   ship.show();
   ship.move();
-  System.out.println(bullets);
 }
 
 public void keyPressed() {
