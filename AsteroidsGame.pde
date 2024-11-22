@@ -2,6 +2,8 @@
 
 Spaceship ship = new Spaceship();
 
+Spaceship[] fleet = new Spaceship[5];
+
 int numStars = 1000;
 Star[] stars = new Star[numStars];
 
@@ -13,6 +15,9 @@ public void setup() {
   frameRate(100);
   ship.setCenterX(300);
   ship.setCenterY(300);
+  for(int i = 0; i < fleet.length; i++) {
+    fleet[i] = new Spaceship(i); 
+  }
   for(int i = 0; i < stars.length; i++) {
     stars[i] = new Star(); 
   }
@@ -28,6 +33,10 @@ public void draw() {
     b.show();
     b.move();
   }
+  /*for(Spaceship s : fleet) {
+    s.show();
+    s.move();
+  }*/
   ship.show();
   ship.move();
 }
