@@ -42,7 +42,7 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if(key == 'q') {
+  if(key == ' ') {
     bullets.add(new Bullet(ship)); 
   }
   if(key == 'f') {
