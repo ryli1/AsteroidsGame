@@ -33,17 +33,14 @@ public void draw() {
     b.show();
     b.move();
   }
-  /*for(Spaceship s : fleet) {
-    s.show();
-    s.move();
-  }*/
   ship.show();
   ship.move();
 }
 
 public void keyPressed() {
   if(key == ' ') {
-    bullets.add(new Bullet(ship)); 
+    bullets.add(new Bullet(ship));
+    ship.hyperspace();
   }
   if(key == 'f') {
     ship.hyperspace(); 
