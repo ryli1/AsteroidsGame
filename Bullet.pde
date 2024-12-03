@@ -1,8 +1,7 @@
 class Bullet extends Floater {
-  double dRadians;
   public Bullet(Spaceship aShip) {
     myPointDirection = aShip.getDirection();
-    dRadians = myPointDirection*(Math.PI/180);     
+    double dRadians = myPointDirection*(Math.PI/180);     
     myCenterX = aShip.getX();
     myCenterY = aShip.getY();
     myColor = color(#00E3FF);
