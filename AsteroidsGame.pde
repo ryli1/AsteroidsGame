@@ -54,7 +54,7 @@ public void keyPressed() {
     ship.turn(6); 
   }
   if(key == 'q') {
-    //bullets.add(new Bullet(ship));
+    bullets.add(0, new Bullet(ship));
     ship.hyperspace();
   }
 
