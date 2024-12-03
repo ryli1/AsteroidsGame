@@ -38,10 +38,6 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if(key == 'q') {
-    bullets.add(new Bullet(ship));
-    ship.hyperspace();
-  }
   if(key == 'f') {
     ship.hyperspace(); 
   }
@@ -56,6 +52,10 @@ public void keyPressed() {
   }
   if(key == 'd') {
     ship.turn(6); 
+  }
+  if(key == 'q') {
+    bullets.add(new Bullet(ship));
+    ship.hyperspace();
   }
 
 }
