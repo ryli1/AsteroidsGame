@@ -1,5 +1,3 @@
-//Encapsulate everything
-
 Spaceship ship = new Spaceship();
 
 Spaceship[] fleet = new Spaceship[5];
@@ -15,9 +13,9 @@ public void setup() {
   frameRate(100);
   ship.setCenterX(300);
   ship.setCenterY(300);
-  for(int i = 0; i < fleet.length; i++) {
+  /*for(int i = 0; i < fleet.length; i++) {
     fleet[i] = new Spaceship(i); 
-  }
+  }*/
   for(int i = 0; i < stars.length; i++) {
     stars[i] = new Star(); 
   }
@@ -33,29 +31,32 @@ public void draw() {
     b.show();
     b.move();
   }
+  /*for(Spaceship s : fleet) {
+    s.show();
+    s.move();
+  }*/
   ship.show();
   ship.move();
 }
 
 public void keyPressed() {
-  if(key == 'f') {
+  if(key == 'q') {
+    bullets.add(new Bullet(ship)); 
+  }
+  else if(key == 'f') {
     ship.hyperspace(); 
   }
-  if(key == 'w') {
+  else if(key == 'w') {
     ship.accelerate(0.1); 
   }
-  if(key == 's') {
+  else if(key == 's') {
     ship.accelerate(-0.1); 
   }
-  if(key == 'a') {
+  else if(key == 'a') {
     ship.turn(-6); 
   }
-  if(key == 'd') {
+  else if(key == 'd') {
     ship.turn(6); 
-  }
-  if(key == 'q') {
-    bullets.add(0, new Bullet(ship));
-    ship.hyperspace();
   }
 
 }
