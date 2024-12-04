@@ -22,11 +22,10 @@ class Floater {
   public void move () {  //move the floater in the current direction of travel     
     //change the x and y coordinates by myXspeed and myYspeed       
     myCenterX += myXspeed;    
-    myCenterY += myYspeed;     
+    myCenterY += myYspeed;   
   }
   public void show () { //Draws the floater at the current position  
 
-    fill(myColor);   
     stroke(myColor);    
 
     //translate the (x,y) center of the ship to the correct position
