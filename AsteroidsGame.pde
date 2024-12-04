@@ -1,3 +1,5 @@
+//FIX BULLETS, MAKE ASTEROIDS SHRINK. MAKE ACCELERATION DECELERATE A LITTLE
+
 Spaceship ship = new Spaceship();
 
 Spaceship[] fleet = new Spaceship[5];
