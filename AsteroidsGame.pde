@@ -37,6 +37,8 @@ public void draw() {
   }*/
   ship.show();
   ship.move();
+  if(bullets.size() > 1) 
+    ship.hyperspace();
 }
 
 public void keyPressed() {
