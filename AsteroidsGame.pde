@@ -5,19 +5,28 @@ Spaceship[] fleet = new Spaceship[5];
 int numStars = 1000;
 Star[] stars = new Star[numStars];
 
-ArrayList <Bullet> bullets = new ArrayList <Bullet>();
+ArrayList <Bullet> shots = new ArrayList <Bullet>();
+
+int numAsteroids = 8;
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 
 public void setup() {
-  size(600, 600);
+  size(700, 700);
   background(0);
-  frameRate(100);
-  ship.setCenterX(300);
-  ship.setCenterY(300);
+  frameRate(80);
+  ship.setCenterX(width/2);
+  ship.setCenterY(height/2);
   /*for(int i = 0; i < fleet.length; i++) {
     fleet[i] = new Spaceship(i); 
   }*/
   for(int i = 0; i < stars.length; i++) {
     stars[i] = new Star(); 
+  }
+  for(int i = 0; i < numAsteroids; i++) {
+    asteroids.add(new Asteroid());
+    asteroids.get(i).setCenterX((int)(Math.random()*width));
+    asteroids.get(i).setCenterY((int)(Math.random()*height));
+
   }
 }
 
@@ -27,32 +36,32 @@ public void draw() {
     s.show();
     s.blink();
   }
-  for(Bullet b : bullets) {
+  for(Bullet b : shots) {
     b.show();
     b.move();
   }
-  /*for(Spaceship s : fleet) {
-    s.show();
-    s.move();
-  }*/
+  for(Asteroid b : asteroids) {
+    b.show();
+    b.move();
+  }
   ship.show();
   ship.move();
-  if(bullets.size() > 1) 
-    ship.hyperspace();
 }
 
 public void keyPressed() {
   if(key == 'q') {
-    bullets.add(0, new Bullet(ship)); 
+    shots.add(0, new Bullet(ship)); 
+    if(shots.size() > 50) 
+    shots.remove(shots.size()-1);
   }
   else if(key == 'f') {
     ship.hyperspace(); 
   }
   else if(key == 'w') {
-    ship.accelerate(0.1); 
+    ship.accelerate(0.15); 
   }
   else if(key == 's') {
-    ship.accelerate(-0.1); 
+    ship.accelerate(-0.15); 
   }
   else if(key == 'a') {
     ship.turn(-6); 
