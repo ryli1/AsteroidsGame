@@ -3,8 +3,8 @@ class Star {
   private color myColor;
   private boolean blinks, isBlinking;
   public Star() {
-    myX = (float)Math.random()*600;
-    myY = (float)Math.random()*600;
+    myX = (float)Math.random()*width;
+    myY = (float)Math.random()*height;
     mySize = (float)Math.random()*2;
     myColor = color(255, 255, 255, (int)(Math.random()*100)+155);
     if ((int)(Math.random()*15) == 1) { //1/15 chance to be a blinking star
