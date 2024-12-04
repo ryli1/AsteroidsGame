@@ -43,7 +43,7 @@ public void draw() {
 
 public void keyPressed() {
   if(key == 'q') {
-    bullets.add(new Bullet(ship)); 
+    bullets.add(0, new Bullet(ship)); 
   }
   else if(key == 'f') {
     ship.hyperspace(); 
