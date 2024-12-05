@@ -7,13 +7,12 @@ Spaceship[] fleet = new Spaceship[5];
 int numStars = 1000;
 Star[] stars = new Star[numStars];
 
-ArrayList <Bullet> shots;
+ArrayList<Bullet> shots = new ArrayList<Bullet>();
 
 int numAsteroids = 8;
 ArrayList <Asteroid> asteroids;
 
 public void setup() {
-  shots = new ArrayList <Bullet>();
   asteroids = new ArrayList <Asteroid>();
   size(700, 700);
   background(0);
