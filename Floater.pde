@@ -54,5 +54,10 @@ abstract class Floater {
   public void setCenterY(int y) {
     myCenterY = y; 
   }
+  public double getX() {
+    return myCenterX;
+  }
+  public double getY() {
+    return myCenterY;
+  }
 } 
-
