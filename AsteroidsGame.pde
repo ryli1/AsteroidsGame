@@ -10,7 +10,7 @@ Star[] stars = new Star[numStars];
 ArrayList <Bullet> shots;
 
 int numAsteroids = 8;
-ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
+//ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 Asteroid[] asteroidz = new Asteroid[10];
 
 public void setup() {
