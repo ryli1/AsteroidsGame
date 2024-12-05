@@ -36,7 +36,6 @@ public void setup() {
 
   }*/
 }
-Asteroid newthing = new Asteroid();
 
 public void draw() {
   background(0);
@@ -81,5 +80,4 @@ public void keyPressed() {
   else if(key == 'd') {
     ship.turn(6); 
   }
-
 }
