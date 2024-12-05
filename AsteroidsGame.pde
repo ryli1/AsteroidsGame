@@ -7,13 +7,14 @@ Spaceship[] fleet = new Spaceship[5];
 int numStars = 1000;
 Star[] stars = new Star[numStars];
 
-ArrayList<Bullet> shots = new ArrayList<Bullet>();
+ArrayList <Bullet> shots;
 
 int numAsteroids = 8;
-ArrayList <Asteroid> asteroids;
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
+Asteroid[] asteroidz = new Asteroid[10];
 
 public void setup() {
-  asteroids = new ArrayList <Asteroid>();
+  shots = new ArrayList <Bullet>();
   size(700, 700);
   background(0);
   frameRate(80);
@@ -25,13 +26,17 @@ public void setup() {
   for(int i = 0; i < stars.length; i++) {
     stars[i] = new Star(); 
   }
-  for(int i = 0; i < numAsteroids; i++) {
+  for(int i = 0; i < asteroidz.length; i++) {
+    asteroidz[i] = new Asteroid();
+  }
+  /*for(int i = 0; i < numAsteroids; i++) {
     asteroids.add(new Asteroid());
     asteroids.get(i).setCenterX((int)(Math.random()*width));
     asteroids.get(i).setCenterY((int)(Math.random()*height));
 
-  }
+  }*/
 }
+Asteroid newthing = new Asteroid();
 
 public void draw() {
   background(0);
@@ -43,9 +48,13 @@ public void draw() {
     b.show();
     b.move();
   }
-  for(Asteroid b : asteroids) {
-    b.show();
-    b.move();
+  for(Asteroid a : asteroids) {
+    a.show();
+    a.move();
+  }
+  for(Asteroid a : asteroidz) {
+    a.show();
+    a.move();
   }
   ship.show();
   ship.move();
