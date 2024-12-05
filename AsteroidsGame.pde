@@ -10,8 +10,7 @@ Star[] stars = new Star[numStars];
 ArrayList <Bullet> shots;
 
 int numAsteroids = 8;
-//ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
-Asteroid[] asteroidz = new Asteroid[10];
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 
 public void setup() {
   shots = new ArrayList <Bullet>();
@@ -26,15 +25,12 @@ public void setup() {
   for(int i = 0; i < stars.length; i++) {
     stars[i] = new Star(); 
   }
-  for(int i = 0; i < asteroidz.length; i++) {
-    asteroidz[i] = new Asteroid();
-  }
-  /*for(int i = 0; i < numAsteroids; i++) {
+  for(int i = 0; i < numAsteroids; i++) {
     asteroids.add(new Asteroid());
     asteroids.get(i).setCenterX((int)(Math.random()*width));
     asteroids.get(i).setCenterY((int)(Math.random()*height));
 
-  }*/
+  }
 }
 
 public void draw() {
@@ -48,10 +44,6 @@ public void draw() {
     b.move();
   }
   for(Asteroid a : asteroids) {
-    a.show();
-    a.move();
-  }
-  for(Asteroid a : asteroidz) {
     a.show();
     a.move();
   }
@@ -80,4 +72,5 @@ public void keyPressed() {
   else if(key == 'd') {
     ship.turn(6); 
   }
+
 }
