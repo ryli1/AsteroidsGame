@@ -1,4 +1,6 @@
 //ADD SHIP COLLISION, MAKE ASTEROIDS SHRINK. MAKE ACCELERATION DECELERATE A LITTLE
+//MAKE COLLISION DISTANCE DYNAMICALLY CHANGE WITH ASTEROID SIZE
+//ADD ONE MORE ASTEROID TYPE
 
 Spaceship ship = new Spaceship();
 
@@ -9,7 +11,7 @@ Star[] stars = new Star[numStars];
 
 ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
-int numAsteroids = 8;
+int numAsteroids = 15;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
 public void setup() {
@@ -32,6 +34,7 @@ public void setup() {
 }
 
 public void draw() {
+  System.out.println(asteroids.size());
   background(0);
   for (Star s : stars) {
     s.show();
@@ -49,9 +52,16 @@ public void draw() {
     for (int j = 0; j < asteroids.size(); j++) {
       float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
       if (distance < 20) {
-        asteroids.remove(j);
+        asteroids.set(j, new Asteroid());
         shots.remove(i);
+        break;
       }
+    }
+  }
+  for (int i = 0; i < asteroids.size(); i++) {
+    float distance = dist((float)ship.getX(), (float)ship.getY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
+    if (distance < 20) {
+      asteroids.set(i, new Asteroid());
     }
   }
   ship.show();
@@ -61,7 +71,7 @@ public void draw() {
 public void keyPressed() {
   if (key == 'q') {
     shots.add(0, new Bullet(ship)); 
-    if (shots.size() > 50) 
+    if (shots.size() > 100) 
       shots.remove(shots.size()-1);
   } else if (key == 'f') {
     ship.hyperspace();
