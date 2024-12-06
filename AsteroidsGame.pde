@@ -28,8 +28,7 @@ public void setup() {
   }
   for (int i = 0; i < numAsteroids; i++) {
     asteroids.add(new Asteroid());
-    asteroids.get(i).setCenterX((int)(Math.random()*width));
-    asteroids.get(i).setCenterY((int)(Math.random()*height));
+
   }
 }
 
