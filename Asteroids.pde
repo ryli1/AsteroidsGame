@@ -34,6 +34,8 @@ class Asteroid extends Floater {
       xCorners[i] *= randomSize;
       yCorners[i] *= randomSize;
     }
+    myCenterX =(int)(Math.random()*width);
+    myCenterY = (int)(Math.random()*height);
   }
   public void move() {
     turn(rotSpeed);
