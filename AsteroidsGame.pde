@@ -34,7 +34,6 @@ public void setup() {
 }
 
 public void draw() {
-  System.out.println(asteroids.size());
   background(0);
   for (Star s : stars) {
     s.show();
