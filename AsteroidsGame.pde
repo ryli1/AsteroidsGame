@@ -1,4 +1,4 @@
-//MAKE ASTEROIDS SHRINK. MAKE ACCELERATION DECELERATE A LITTLE
+//ADD SHIP COLLISION, MAKE ASTEROIDS SHRINK. MAKE ACCELERATION DECELERATE A LITTLE
 //MAKE COLLISION DISTANCE DYNAMICALLY CHANGE WITH ASTEROID SIZE
 //ADD ONE MORE ASTEROID TYPE
 
@@ -34,6 +34,7 @@ public void setup() {
 }
 
 public void draw() {
+
   background(0);
   for (Star s : stars) {
     s.show();
@@ -50,7 +51,7 @@ public void draw() {
   for (int i = 0; i < shots.size(); i++) {
     for (int j = 0; j < asteroids.size(); j++) {
       float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
-      if (distance < 20) {
+      if (distance < 10 * asteroids.get(j).getSize()) {
         asteroids.set(j, new Asteroid());
         shots.remove(i);
         break;
@@ -59,7 +60,7 @@ public void draw() {
   }
   for (int i = 0; i < asteroids.size(); i++) {
     float distance = dist((float)ship.getX(), (float)ship.getY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
-    if (distance < 20) {
+    if (distance < 10 * asteroids.get(i).getSize()) {
       asteroids.set(i, new Asteroid());
     }
   }
