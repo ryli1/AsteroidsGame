@@ -1,4 +1,3 @@
-
 class Asteroid extends Floater {
   private double rotSpeed;
   private int randomN;
@@ -53,5 +52,8 @@ class Asteroid extends Floater {
   public void show() {
     noFill();
     super.show();
+  }
+  public int getSize() {
+    return randomSize; 
   }
 }
