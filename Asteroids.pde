@@ -1,13 +1,21 @@
+
 class Asteroid extends Floater {
   private double rotSpeed;
   private int randomN;
   private int randomSize;
+  private int numAsteroidTypes = 2; 
   public Asteroid() {
     myColor = color(255);
     myXspeed = (Math.random()*3)-1; 
     myYspeed = (Math.random()*3)-1;
+    if(myXspeed == 0) {
+      myXspeed++;
+    }
+    if(myYspeed == 0) {
+      myYspeed++;
+    }
     rotSpeed = Math.random()*4;
-    randomN = (int)(Math.random()*2);
+    randomN = (int)(Math.random()*numAsteroidTypes);
     randomSize = (int)(Math.random()*3)+1;
     if(randomN == 0) {
       corners = 6;
@@ -18,6 +26,9 @@ class Asteroid extends Floater {
       corners = 10;
       xCorners = new int[]{-11, -11, -4, -3, 6, 8, 8, -2, -8, -8};
       yCorners = new int[]{3, -3, -4, -8, -6, 0, 6, 10, 10, 3};
+    }
+    else if(randomN == 2) {
+      //corners =  
     }
     for(int i = 0; i < corners; i++) {
       //expand the asteroids
