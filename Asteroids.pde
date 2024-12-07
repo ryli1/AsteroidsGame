@@ -5,8 +5,8 @@ class Asteroid extends Floater {
   private int numAsteroidTypes = 3; 
   public Asteroid() {
     myColor = color(255);
-    myXspeed = (Math.random()*3)-1; 
-    myYspeed = (Math.random()*3)-1;
+    myXspeed = (Math.random()*4)-1; 
+    myYspeed = (Math.random()*4)-1;
     if(myXspeed == 0) {
       myXspeed++;
     }
