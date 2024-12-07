@@ -128,18 +128,13 @@ public void keyReleased() {
     spacePressed = false;
   } else if (key == 'f') {
     fPressed = false;
-    ship.hyperspace();
   } else if (key == 'w') {
     wPressed = false;
-    ship.accelerate(0.15);
   } else if (key == 's') {
     sPressed = false;
-    ship.accelerate(-0.15);
   } else if (key == 'a') {
     aPressed = false;
-    ship.turn(-8);
   } else if (key == 'd') {
     dPressed = false;
-    ship.turn(8);
   }
 }
