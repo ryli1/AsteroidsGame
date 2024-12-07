@@ -15,7 +15,7 @@ class Asteroid extends Floater {
     }
     rotSpeed = Math.random()*4;
     randomN = (int)(Math.random()*numAsteroidTypes);
-    randomSize = (float)(Math.random()*2)+1;
+    randomSize = (float)(Math.random()*3)+1;
     if(randomN == 0) {
       corners = 6;
       xCorners = new int[]{-11, 7, 13, 6, -16, -5};
