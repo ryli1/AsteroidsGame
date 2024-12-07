@@ -77,12 +77,12 @@ public void draw() {
     }
     ship.show();
     ship.move();
-    healthBar.show();
-
     if (healthBar.getHealth() <= 0) {
       gameIsStarted = false;
     }
   }
+   healthBar.show();
+
 }
 
 public void keyPressed() {
