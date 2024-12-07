@@ -43,6 +43,7 @@ public void draw() {
     background(0);
     for (Star s : stars) {
       s.show();
+      s.blink();
     }
     for (Bullet b : shots) {
       b.show();
