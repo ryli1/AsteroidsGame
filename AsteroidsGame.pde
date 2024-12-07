@@ -9,7 +9,7 @@ Star[] stars = new Star[numStars];
 
 ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
-int numAsteroids = 15;
+int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
 Health healthBar = new Health();
@@ -54,8 +54,14 @@ public void draw() {
         float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
         if (distance < 13 * asteroids.get(j).getSize()) {
           asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
-          asteroids.get(j).setCenterX((int)(Math.random()*100)-300);
-          asteroids.get(j).setCenterY((int)(Math.random()*100)-300);
+          int ranNum = (int)(Math.random()*2);
+          if (ranNum == 0) {
+            asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
+            asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
+          } else {
+            asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
+            asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
+          }
           shots.remove(i);
           break;
         }
@@ -66,8 +72,14 @@ public void draw() {
       float distance = dist((float)ship.getX(), (float)ship.getY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
       if (distance < 13 * asteroids.get(i).getSize()) {
         asteroids.set(i, new Asteroid());
-        asteroids.get(i).setCenterX((int)(Math.random()*100)-300);
-        asteroids.get(i).setCenterY((int)(Math.random()*100)-300);
+        int ranNum = (int)(Math.random()*2);
+        if (ranNum == 0) {
+          asteroids.get(i).setCenterX((int)(Math.random()*-300));
+          asteroids.get(i).setCenterY((int)(Math.random()*-300));
+        } else {
+          asteroids.get(i).setCenterX((int)(Math.random()*width)+800);
+          asteroids.get(i).setCenterY((int)(Math.random()*height)+800);
+        }
         healthBar.update();
       }
     }
