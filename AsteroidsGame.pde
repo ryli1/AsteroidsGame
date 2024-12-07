@@ -17,7 +17,7 @@ Health healthBar = new Health();
 public void setup() {
   size(700, 700);
   background(0);
-  frameRate(60);
+  frameRate(100);
   ship.setCenterX(width/2);
   ship.setCenterY(height/2);
   for (int i = 0; i < stars.length; i++) {
