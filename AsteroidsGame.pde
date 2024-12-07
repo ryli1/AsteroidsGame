@@ -4,8 +4,6 @@ boolean gameIsStarted = true;
 
 Spaceship ship = new Spaceship();
 
-Spaceship[] fleet = new Spaceship[5];
-
 int numStars = 1000;
 Star[] stars = new Star[numStars];
 
@@ -19,12 +17,9 @@ Health healthBar = new Health();
 public void setup() {
   size(700, 700);
   background(0);
-  frameRate(80);
+  frameRate(60);
   ship.setCenterX(width/2);
   ship.setCenterY(height/2);
-  /*for(int i = 0; i < fleet.length; i++) {
-   fleet[i] = new Spaceship(i); 
-   }*/
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
@@ -36,10 +31,10 @@ public void setup() {
 }
 
 public void draw() {
-  if(gameIsStarted == false) {
+  if (gameIsStarted == false) {
     background(0);
   }
-  if(gameIsStarted == true) {
+  if (gameIsStarted == true) {
     background(0);
     for (Star s : stars) {
       s.show();
@@ -59,8 +54,8 @@ public void draw() {
         float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
         if (distance < 13 * asteroids.get(j).getSize()) {
           asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
-          asteroids.get(j).setCenterX((int)(Math.random()*100)-200);
-          asteroids.get(j).setCenterY((int)(Math.random()*100)-200);
+          asteroids.get(j).setCenterX((int)(Math.random()*100)-300);
+          asteroids.get(j).setCenterY((int)(Math.random()*100)-300);
           shots.remove(i);
           break;
         }
@@ -69,10 +64,10 @@ public void draw() {
     //ship collision
     for (int i = 0; i < asteroids.size(); i++) {
       float distance = dist((float)ship.getX(), (float)ship.getY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
-      if (distance < 12 * asteroids.get(i).getSize()) {
+      if (distance < 13 * asteroids.get(i).getSize()) {
         asteroids.set(i, new Asteroid());
-        asteroids.get(i).setCenterX((int)(Math.random()*100)-200);
-        asteroids.get(i).setCenterY((int)(Math.random()*100)-200);
+        asteroids.get(i).setCenterX((int)(Math.random()*100)-300);
+        asteroids.get(i).setCenterY((int)(Math.random()*100)-300);
         healthBar.update();
       }
     }
@@ -81,29 +76,70 @@ public void draw() {
     if (healthBar.getHealth() <= 0) {
       gameIsStarted = false;
     }
+    if (spacePressed == true) {
+      shots.add(0, new Bullet(ship)); 
+      if (shots.size() > 100) 
+        shots.remove(shots.size()-1);
+    } 
+    if (fPressed == true) {
+      ship.hyperspace();
+    }  
+    if (wPressed == true) {
+      ship.accelerate(0.05);
+    }  
+    if (sPressed == true) {
+      ship.accelerate(-0.05);
+    }  
+    if (aPressed == true) {
+      ship.turn(-3);
+    }  
+    if (dPressed == true) {
+      ship.turn(3);
+    }
   }
-   healthBar.show();
-
+  healthBar.show();
 }
+
+boolean spacePressed, fPressed, wPressed, sPressed, aPressed, dPressed = false;
 
 public void keyPressed() {
   if (key == ' ') {
-    shots.add(0, new Bullet(ship)); 
-    if (shots.size() > 100) 
-      shots.remove(shots.size()-1);
+    spacePressed = true;
   } else if (key == 'f') {
+    fPressed = true;
     ship.hyperspace();
   } else if (key == 'w') {
+    wPressed = true;
     ship.accelerate(0.15);
   } else if (key == 's') {
+    sPressed = true;
     ship.accelerate(-0.15);
   } else if (key == 'a') {
+    aPressed = true;
     ship.turn(-8);
   } else if (key == 'd') {
+    dPressed = true;
     ship.turn(8);
   }
 }
 
 public void keyReleased() {
-  
+  if (key == ' ') {
+    spacePressed = false;
+  } else if (key == 'f') {
+    fPressed = false;
+    ship.hyperspace();
+  } else if (key == 'w') {
+    wPressed = false;
+    ship.accelerate(0.15);
+  } else if (key == 's') {
+    sPressed = false;
+    ship.accelerate(-0.15);
+  } else if (key == 'a') {
+    aPressed = false;
+    ship.turn(-8);
+  } else if (key == 'd') {
+    dPressed = false;
+    ship.turn(8);
+  }
 }
