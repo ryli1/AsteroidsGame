@@ -17,7 +17,7 @@ Health healthBar = new Health();
 public void setup() {
   size(700, 700);
   background(0);
-  frameRate(100);
+  frameRate(60);
   ship.setCenterX(width/2);
   ship.setCenterY(height/2);
   for (int i = 0; i < stars.length; i++) {
@@ -76,14 +76,6 @@ public void draw() {
     if (healthBar.getHealth() <= 0) {
       gameIsStarted = false;
     }
-    if (spacePressed == true) {
-      shots.add(0, new Bullet(ship)); 
-      if (shots.size() > 100) 
-        shots.remove(shots.size()-1);
-    } 
-    if (fPressed == true) {
-      ship.hyperspace();
-    }  
     if (wPressed == true) {
       ship.accelerate(0.05);
     }  
@@ -91,43 +83,36 @@ public void draw() {
       ship.accelerate(-0.05);
     }  
     if (aPressed == true) {
-      ship.turn(-3);
+      ship.turn(-2);
     }  
     if (dPressed == true) {
-      ship.turn(3);
+      ship.turn(2);
     }
   }
   healthBar.show();
 }
 
-boolean spacePressed, fPressed, wPressed, sPressed, aPressed, dPressed = false;
+boolean wPressed, sPressed, aPressed, dPressed = false;
 
 public void keyPressed() {
-  if (key == ' ') {
-    spacePressed = true;
-  } else if (key == 'f') {
-    fPressed = true;
-    ship.hyperspace();
-  } else if (key == 'w') {
+  if (key == 'w') {
     wPressed = true;
-    ship.accelerate(0.15);
   } else if (key == 's') {
     sPressed = true;
-    ship.accelerate(-0.15);
   } else if (key == 'a') {
     aPressed = true;
-    ship.turn(-8);
   } else if (key == 'd') {
     dPressed = true;
-    ship.turn(8);
   }
 }
 
 public void keyReleased() {
   if (key == ' ') {
-    spacePressed = false;
+    shots.add(0, new Bullet(ship)); 
+    if (shots.size() > 100) 
+      shots.remove(shots.size()-1);
   } else if (key == 'f') {
-    fPressed = false;
+    ship.hyperspace();
   } else if (key == 'w') {
     wPressed = false;
   } else if (key == 's') {
