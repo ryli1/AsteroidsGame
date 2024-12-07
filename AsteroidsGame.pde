@@ -68,7 +68,7 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if (key == 'q') {
+  if (key == ' ') {
     shots.add(0, new Bullet(ship)); 
     if (shots.size() > 100) 
       shots.remove(shots.size()-1);
