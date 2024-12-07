@@ -9,7 +9,8 @@ class Health {
     fill(#E80C0C);
     strokeWeight(2);
     rect(30, 650, redHealth, 15);
-    fill(#21D606);
+    fill(255);
+    //fill(#21D606);
     noStroke();
     rect(30, 650, greenHealth, 15);
   }
