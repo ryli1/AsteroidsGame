@@ -1,4 +1,5 @@
 class Spaceship extends Floater {
+  boolean isBoosting = false;
   public Spaceship() {
     corners = 4;
     xCorners = new int[]{-8, 16, -8, -2};
@@ -49,12 +50,12 @@ class Spaceship extends Floater {
     //myPointDirection = Math.random()*360;
   }
   public double getXspeed() {
-    return myXspeed; 
+    return myXspeed;
   }
   public double getYspeed() {
-    return myYspeed; 
+    return myYspeed;
   }
   public double getDirection() {
-    return myPointDirection; 
+    return myPointDirection;
   }
 }
