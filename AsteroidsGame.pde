@@ -9,7 +9,7 @@ Star[] stars = new Star[numStars];
 
 ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
-int numAsteroids = 20;
+int numAsteroids = 15;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
 Health healthBar = new Health();
@@ -49,10 +49,10 @@ public void draw() {
       a.move();
     }
     //bullet collision
-    for (int i = 0; i < shots.size(); i++) {
-      for (int j = 0; j < asteroids.size(); j++) {
+    for (int i = shots.size()-1; i >= 0; i--) {
+      for (int j = asteroids.size()-1; j >= 0; j--) {
         float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
-        if (distance < 13 * asteroids.get(j).getSize()) {
+        if (distance < 12 * asteroids.get(j).getSize()) {
           asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
           int ranNum = (int)(Math.random()*2);
           if (ranNum == 0) {
@@ -68,7 +68,7 @@ public void draw() {
       }
     }
     //ship collision
-    for (int i = 0; i < asteroids.size(); i++) {
+    for (int i = asteroids.size()-1; i >= 0; i--) {
       float distance = dist((float)ship.getX(), (float)ship.getY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
       if (distance < 13 * asteroids.get(i).getSize()) {
         asteroids.set(i, new Asteroid());
@@ -133,5 +133,5 @@ public void keyReleased() {
     aPressed = false;
   } else if (key == 'd') {
     dPressed = false;
-  }
+  } 
 }
