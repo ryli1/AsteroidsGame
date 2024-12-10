@@ -9,7 +9,7 @@ Star[] stars = new Star[numStars];
 
 ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
-int numAsteroids = 15;
+int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
 Health healthBar = new Health();
