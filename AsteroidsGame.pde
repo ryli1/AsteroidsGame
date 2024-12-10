@@ -1,4 +1,4 @@
-//MAKE ASTEROIDS SHRINK. MAKE ACCELERATION DECELERATE A LITTLE
+//add more asteroids when there's none left
 
 boolean gameIsStarted = true;
 
@@ -36,33 +36,39 @@ public void draw() {
   }
   if (gameIsStarted == true) {
     background(0);
-    for (Star s : stars) {
-      s.show();
-      s.blink();
+    for (int s = 0; s < stars.length; s++) {
+      stars[s].show();
+      stars[s].blink();
     }
-    for (Bullet b : shots) {
-      b.show();
-      b.move();
+    for (int s = 0; s < shots.size(); s++) {
+      shots.get(s).show();
+      shots.get(s).move();
     }
-    for (Asteroid a : asteroids) {
-      a.show();
-      a.move();
+    for (int a = 0; a < asteroids.size(); a++) {
+      asteroids.get(a).show();
+      asteroids.get(a).move();
     }
     //bullet collision
     for (int i = shots.size()-1; i >= 0; i--) {
       for (int j = asteroids.size()-1; j >= 0; j--) {
         float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
         if (distance < 12 * asteroids.get(j).getSize()) {
-          asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
-          int ranNum = (int)(Math.random()*2);
-          if (ranNum == 0) {
-            asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
-            asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
+          if (asteroids.get(j).getSize() > 2.5) {
+            shots.remove(i);
+            asteroids.get(j).splits(asteroids);
           } else {
-            asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
-            asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
+            asteroids.remove(j);
+            /*asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
+            int ranNum = (int)(Math.random()*2);
+            if (ranNum == 0) {
+              asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
+              asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
+            } else {
+              asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
+              asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
+            }*/
+            shots.remove(i);
           }
-          shots.remove(i);
           break;
         }
       }
@@ -133,5 +139,5 @@ public void keyReleased() {
     aPressed = false;
   } else if (key == 'd') {
     dPressed = false;
-  } 
+  }
 }
