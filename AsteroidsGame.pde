@@ -12,7 +12,7 @@ ArrayList <Bullet> shots = new ArrayList<Bullet>();
 int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
-Health healthBar = new Health();
+Bar healthBar = new Bar();
 
 public void setup() {
   size(700, 700);
