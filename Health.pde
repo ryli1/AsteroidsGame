@@ -1,27 +1,25 @@
-class Health {
+class Bar {
   private float greenHealth, redHealth;
-  public Health() {
+  public Bar() {
     greenHealth = 150;
     redHealth = 150;
   }
- 
-  public void show() {
+  public void show(int x, int y) {
     fill(#E80C0C);
     strokeWeight(2);
-    rect(30, 650, redHealth, 15);
+    rect(x, y, redHealth, 15);
     fill(255);
     //fill(#21D606);
     noStroke();
     rect(30, 650, greenHealth, 15);
   }
-  
-  public void update() {
-    greenHealth -= 10;
-    if(greenHealth <= 0) {
+  public void update(int n) {
+    greenHealth -= n;
+    if (greenHealth <= 0) {
       greenHealth = 0;
     }
   }
   public float getHealth() {
-    return greenHealth; 
+    return greenHealth;
   }
 }
