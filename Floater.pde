@@ -27,7 +27,7 @@ abstract class Floater {
   public void show () { //Draws the floater at the current position  
 
     stroke(myColor);    
-
+    strokeWeight(2);
     //translate the (x,y) center of the ship to the correct position
     translate((float)myCenterX, (float)myCenterY);
 
@@ -59,5 +59,11 @@ abstract class Floater {
   }
   public double getY() {
     return myCenterY;
+  }
+  public double getXspeed() {
+    return myXspeed; 
+  }
+  public double getYspeed() {
+    return myYspeed; 
   }
 } 
