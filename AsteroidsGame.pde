@@ -1,4 +1,4 @@
-//add more asteroids when there's none left
+//add more asteroids when there's none left. fix laser
 
 boolean gameIsStarted = true;
 
@@ -12,7 +12,7 @@ ArrayList <Bullet> shots = new ArrayList<Bullet>();
 int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
-Health healthBar = new Health();
+Bar healthBar = new Bar();
 
 public void setup() {
   size(700, 700);
@@ -51,25 +51,19 @@ public void draw() {
     //bullet collision
     for (int i = shots.size()-1; i >= 0; i--) {
       for (int j = asteroids.size()-1; j >= 0; j--) {
-        float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
-        if (distance < 12 * asteroids.get(j).getSize()) {
-          if (asteroids.get(j).getSize() > 2.5) {
-            shots.remove(i);
-            asteroids.get(j).splits(asteroids);
-          } else {
-            asteroids.remove(j);
-            /*asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
-            int ranNum = (int)(Math.random()*2);
-            if (ranNum == 0) {
-              asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
-              asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
+        if (shots.get(i).getLaser() == false) {
+          float distance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
+          if (distance < 12 * asteroids.get(j).getSize()) {
+            if (asteroids.get(j).getSize() > 2.5) {
+              shots.remove(i);
+              asteroids.get(j).splits(asteroids);
+              break;
             } else {
-              asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
-              asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
-            }*/
-            shots.remove(i);
+              asteroids.remove(j);
+              shots.remove(i);
+              break;
+            }
           }
-          break;
         }
       }
     }
@@ -86,7 +80,7 @@ public void draw() {
           asteroids.get(i).setCenterX((int)(Math.random()*width)+800);
           asteroids.get(i).setCenterY((int)(Math.random()*height)+800);
         }
-        healthBar.update();
+        healthBar.update(10);
       }
     }
     ship.show();
@@ -106,11 +100,16 @@ public void draw() {
     if (dPressed == true) {
       ship.turn(3);
     }
+    if (qPressed == true) {
+      shots.add(0, new Laser(ship)); 
+      if (shots.size() > 1000) 
+        shots.remove(shots.size()-1);
+    }
   }
-  healthBar.show();
+  healthBar.show(30, 650);
 }
 
-boolean wPressed, sPressed, aPressed, dPressed = false;
+boolean qPressed, wPressed, sPressed, aPressed, dPressed = false;
 
 public void keyPressed() {
   if (key == 'w') {
@@ -121,14 +120,18 @@ public void keyPressed() {
     aPressed = true;
   } else if (key == 'd') {
     dPressed = true;
+  } else if (key == 'q') {
+    qPressed = true;
   }
 }
 
 public void keyReleased() {
   if (key == ' ') {
     shots.add(0, new Bullet(ship)); 
-    if (shots.size() > 100) 
+    if (shots.size() > 1000) 
       shots.remove(shots.size()-1);
+  } else if (key == 'q') {
+    qPressed = false;
   } else if (key == 'f') {
     ship.hyperspace();
   } else if (key == 'w') {
