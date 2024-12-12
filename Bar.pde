@@ -5,7 +5,7 @@ class Bar {
     redHealth = 150;
   }
   public void show(int x, int y) {
-    fill(#E80C0C);
+    fill(0);
     strokeWeight(2);
     rect(x, y, redHealth, 15);
     fill(255);
