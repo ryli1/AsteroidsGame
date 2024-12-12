@@ -11,7 +11,7 @@ class Bar {
     fill(255);
     //fill(#21D606);
     noStroke();
-    rect(30, 650, greenHealth, 15);
+    rect(x, y, greenHealth, 15);
   }
   public void update(int n) {
     greenHealth -= n;
