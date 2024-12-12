@@ -86,7 +86,7 @@ public void draw() {
           asteroids.get(i).setCenterX((int)(Math.random()*width)+800);
           asteroids.get(i).setCenterY((int)(Math.random()*height)+800);
         }
-        healthBar.update();
+        healthBar.update(10);
       }
     }
     ship.show();
