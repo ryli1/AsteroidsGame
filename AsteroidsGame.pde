@@ -107,7 +107,7 @@ public void draw() {
       ship.turn(3);
     }
   }
-  healthBar.show(620, 30);
+  healthBar.show(30, 600);
 }
 
 boolean wPressed, sPressed, aPressed, dPressed = false;
