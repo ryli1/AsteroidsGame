@@ -59,14 +59,14 @@ public void draw() {
           } else {
             asteroids.remove(j);
             /*asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
-            int ranNum = (int)(Math.random()*2);
-            if (ranNum == 0) {
-              asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
-              asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
-            } else {
-              asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
-              asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
-            }*/
+             int ranNum = (int)(Math.random()*2);
+             if (ranNum == 0) {
+             asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
+             asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
+             } else {
+             asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
+             asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
+             }*/
             shots.remove(i);
           }
           break;
@@ -77,16 +77,13 @@ public void draw() {
     for (int i = asteroids.size()-1; i >= 0; i--) {
       float distance = dist((float)ship.getX(), (float)ship.getY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
       if (distance < 13 * asteroids.get(i).getSize()) {
-        asteroids.set(i, new Asteroid());
-        int ranNum = (int)(Math.random()*2);
-        if (ranNum == 0) {
-          asteroids.get(i).setCenterX((int)(Math.random()*-300));
-          asteroids.get(i).setCenterY((int)(Math.random()*-300));
+        if (asteroids.get(i).getSize() > 2.5) {
+          asteroids.get(i).splits(asteroids);
         } else {
-          asteroids.get(i).setCenterX((int)(Math.random()*width)+800);
-          asteroids.get(i).setCenterY((int)(Math.random()*height)+800);
+          asteroids.remove(i);
         }
-        healthBar.update(10);
+        healthBar.update(15);
+        break;
       }
     }
     ship.show();
