@@ -32,7 +32,6 @@ public void setup() {
 }
 
 public void draw() {
-  println(asteroids.size());
   if (gameIsStarted == false) {
     background(0);
   }
