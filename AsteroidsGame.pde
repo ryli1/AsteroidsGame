@@ -9,7 +9,7 @@ Star[] stars = new Star[numStars];
 
 ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
-int numAsteroids = 20;
+int numAsteroids = 13;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
 Bar healthBar = new Bar();
@@ -105,7 +105,7 @@ public void draw() {
     }
   }
   if(frameCount % 200 == 0) {
-    while(asteroids.size() < 20) {
+    while(asteroids.size() < 12) {
       asteroids.add(new Asteroid()); 
     }
   }
