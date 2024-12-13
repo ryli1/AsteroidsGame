@@ -110,7 +110,7 @@ public void draw() {
     healthBar.show(30, 630, 15);
     ammoBar.show(30, 660, 10);
     if (frameCount % 80 == 0 && ammoBar.getLength() < 150) {
-      ammoBar.update(10);
+      ammoBar.update(20);
       if (ammoBar.getLength() > 150) {
         ammoBar.setLength(150);
       }
