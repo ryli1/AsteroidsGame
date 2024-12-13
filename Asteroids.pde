@@ -1,6 +1,6 @@
 class Asteroid extends Floater {
   private double rotSpeed;
-  private double randomMaxSpeed = 5;
+  private double randomMaxSpeed = 6;
   private int randomN;
   private float randomSize;
   private int numAsteroidTypes = 3; 
