@@ -9,8 +9,9 @@ Star[] stars = new Star[numStars];
 
 ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
-int numAsteroids = 13;
+int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
+int score = 0;
 
 Bar healthBar = new Bar();
 Bar ammoBar = new Bar();
@@ -34,6 +35,11 @@ public void setup() {
 public void draw() {
   if (gameIsStarted == false) {
     background(0);
+    fill(255);
+    textSize(30);
+    text("GAME OVER", 260, 320);
+    textSize(15);
+    text("Score: " + score, 310, 380);
   }
   if (gameIsStarted == true) {
     background(0);
@@ -61,6 +67,7 @@ public void draw() {
             asteroids.remove(j);
             shots.remove(i);
           }
+          score += 100;
           break;
         }
       }
@@ -95,19 +102,22 @@ public void draw() {
     if (dPressed == true) {
       ship.turn(3);
     }
-  }
-  healthBar.show(30, 630, 15);
-  ammoBar.show(30, 660, 10);
-  if(frameCount % 80 == 0 && ammoBar.getLength() < 150) {
-    ammoBar.update(10);
-    if(ammoBar.getLength() > 150) {
-      ammoBar.setLength(150); 
+    if (frameCount % 200 == 0) {
+      while (asteroids.size() < 20) {
+        asteroids.add(new Asteroid());
+      }
     }
-  }
-  if(frameCount % 200 == 0) {
-    while(asteroids.size() < 12) {
-      asteroids.add(new Asteroid()); 
+    healthBar.show(30, 630, 15);
+    ammoBar.show(30, 660, 10);
+    if (frameCount % 80 == 0 && ammoBar.getLength() < 150) {
+      ammoBar.update(10);
+      if (ammoBar.getLength() > 150) {
+        ammoBar.setLength(150);
+      }
     }
+    textSize(15);
+    fill(255);
+    text("Score: " + score, 30, 690);
   }
 }
 
