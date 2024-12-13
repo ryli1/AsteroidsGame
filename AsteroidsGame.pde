@@ -13,6 +13,7 @@ int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 
 Bar healthBar = new Bar();
+Bar ammoBar = new Bar();
 
 public void setup() {
   size(700, 700);
@@ -31,6 +32,7 @@ public void setup() {
 }
 
 public void draw() {
+  println(asteroids.size());
   if (gameIsStarted == false) {
     background(0);
   }
@@ -58,15 +60,6 @@ public void draw() {
             asteroids.get(j).splits(asteroids);
           } else {
             asteroids.remove(j);
-            /*asteroids.set(j, new Asteroid()); //replace destroyed asteroid with new
-             int ranNum = (int)(Math.random()*2);
-             if (ranNum == 0) {
-             asteroids.get(j).setCenterX((int)(Math.random()*-300)+100);
-             asteroids.get(j).setCenterY((int)(Math.random()*-300)+100);
-             } else {
-             asteroids.get(j).setCenterX((int)(Math.random()*width)+900);
-             asteroids.get(j).setCenterY((int)(Math.random()*height)+900);
-             }*/
             shots.remove(i);
           }
           break;
@@ -82,13 +75,13 @@ public void draw() {
         } else {
           asteroids.remove(i);
         }
-        healthBar.update(15);
+        healthBar.update(-15);
         break;
       }
     }
     ship.show();
     ship.move();
-    if (healthBar.getHealth() <= 0) {
+    if (healthBar.getLength() <= 0) {
       gameIsStarted = false;
     }
     if (wPressed == true) {
@@ -104,7 +97,19 @@ public void draw() {
       ship.turn(3);
     }
   }
-  healthBar.show(30, 600);
+  healthBar.show(30, 630, 15);
+  ammoBar.show(30, 660, 10);
+  if(frameCount % 80 == 0 && ammoBar.getLength() < 150) {
+    ammoBar.update(10);
+    if(ammoBar.getLength() > 150) {
+      ammoBar.setLength(150); 
+    }
+  }
+  if(frameCount % 200 == 0) {
+    while(asteroids.size() < 20) {
+      asteroids.add(new Asteroid()); 
+    }
+  }
 }
 
 boolean wPressed, sPressed, aPressed, dPressed = false;
@@ -122,8 +127,9 @@ public void keyPressed() {
 }
 
 public void keyReleased() {
-  if (key == ' ') {
+  if (key == ' ' && ammoBar.getLength() > 0) {
     shots.add(0, new Bullet(ship)); 
+    ammoBar.update(-5);
     if (shots.size() > 100) 
       shots.remove(shots.size()-1);
   } else if (key == 'f') {
