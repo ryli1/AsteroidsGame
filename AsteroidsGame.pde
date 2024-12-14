@@ -115,7 +115,7 @@ public void draw() {
         ammoBar.setLength(150);
       }
     }
-    if ((frameCount == 500 || frameCount % 1500 == 0) && healthDrop.size() < 1) {
+    if ((frameCount == 500 || frameCount % 1200 == 0) && healthDrop.size() < 1) {
       healthDrop.add(new Asteroid((int)(Math.random()*width)));
     }
     if (healthDrop.size() > 0) {
