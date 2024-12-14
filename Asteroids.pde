@@ -39,7 +39,6 @@ class Asteroid extends Floater {
   }
   public Asteroid(float size, double x, double y, int n) {
     //small asteroid
-    randomMaxSpeed = 5;
     myColor = color(255);
     myXspeed = (Math.random()*randomMaxSpeed)-2;
     myYspeed = (Math.random()*randomMaxSpeed)-2; 
@@ -73,7 +72,7 @@ class Asteroid extends Floater {
     myCenterX = x;
     myCenterY = y;
   }
-    public Asteroid(int x) {
+    public Asteroid(float x) {
     //health asteroid
     myColor = color(#9EFF95);
     myCenterX = x;
