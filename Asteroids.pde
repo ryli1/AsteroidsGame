@@ -1,10 +1,11 @@
 class Asteroid extends Floater {
   private double rotSpeed;
-  private double randomMaxSpeed = 6;
+  private double randomMaxSpeed = 5;
   private int randomN;
   private float randomSize;
   private int numAsteroidTypes = 3; 
   public Asteroid() {
+    //main asteroid
     myColor = color(255);
     myXspeed = (Math.random()*randomMaxSpeed)-2;
     myYspeed = (Math.random()*randomMaxSpeed)-2; 
@@ -37,6 +38,7 @@ class Asteroid extends Floater {
     }
   }
   public Asteroid(float size, double x, double y, int n) {
+    //small asteroid
     randomMaxSpeed = 5;
     myColor = color(255);
     myXspeed = (Math.random()*randomMaxSpeed)-2;
@@ -70,6 +72,23 @@ class Asteroid extends Floater {
     }
     myCenterX = x;
     myCenterY = y;
+  }
+    public Asteroid(int x) {
+    //health asteroid
+    myColor = color(#9EFF95);
+    myCenterX = x;
+    myCenterY = 0;
+    myXspeed = 0;
+    myYspeed = 1; 
+    rotSpeed = 0;
+      corners = 12;
+      xCorners = new int[]{-2, 2, 2, 8, 8, 2, 2, -2, -2, -8, -8, -2};
+      yCorners = new int[]{8, 8, 2, 2, -2, -2, -8, -8, -2, -2, 2, 2};
+    for (int i = 0; i < corners; i++) {
+      //change size of the asteroids
+      xCorners[i] *= 2;
+      yCorners[i] *= 2;
+    }
   }
   public void move() {
     turn(rotSpeed);
