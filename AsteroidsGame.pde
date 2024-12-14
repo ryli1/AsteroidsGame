@@ -10,6 +10,7 @@ ArrayList <Bullet> shots = new ArrayList<Bullet>();
 int numAsteroids = 20;
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 ArrayList <Asteroid> healthDrop = new ArrayList <Asteroid>();
+
 int score = 0;
 
 Bar healthBar = new Bar();
@@ -114,19 +115,27 @@ public void draw() {
         ammoBar.setLength(150);
       }
     }
-    if ((frameCount == 500 || frameCount % 1000 == 0) && healthDrop.size() < 1) {
+    if ((frameCount == 500 || frameCount % 1500 == 0) && healthDrop.size() < 1) {
       healthDrop.add(new Asteroid((int)(Math.random()*width)));
     }
-    if(healthDrop.size() > 0) {
+    if (healthDrop.size() > 0) {
       healthDrop.get(0).show();
       healthDrop.get(0).move();
       float hpShipDistance = dist((float)ship.getX(), (float)ship.getY(), (float)healthDrop.get(0).getX(), (float)healthDrop.get(0).getY());
-      if(hpShipDistance < 25) {
-         healthDrop.remove(0);
-         healthBar.update(50);
+      for (int i = shots.size()-1; i >= 0; i--) {
+        float hpBulletDistance = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)healthDrop.get(0).getX(), (float)healthDrop.get(0).getY());
+        if (hpBulletDistance < 20) {
+          healthDrop.remove(0);
+          healthBar.update(50);
+          break;
+        }
+      }
+      if (hpShipDistance < 25) {
+        healthDrop.remove(0);
+        healthBar.update(30);
       }
     }
-    if(healthBar.getLength() > 150) {
+    if (healthBar.getLength() > 150) {
       healthBar.setLength(150);
     }
     textSize(15);
