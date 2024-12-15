@@ -114,7 +114,7 @@ public void draw() {
     healthBar.show(30, 630, 15);
     ammoBar.show(30, 660, 10);
     if (frameCount % 80 == 0 && ammoBar.getLength() < 150) {
-      ammoBar.update(20);
+      ammoBar.update(15);
     }
     if ((frameCount == 300 || frameCount % 1200 == 0) && healthDrop.size() < 1) {
       healthDrop.add(new Asteroid((int)(Math.random()*width)));
