@@ -67,6 +67,7 @@ public void draw() {
             asteroids.remove(j);
             shots.remove(i);
           }
+          ammoBar.update(5);
           score += 100;
           break;
         }
